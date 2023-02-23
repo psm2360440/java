@@ -5,6 +5,7 @@ import java.util.Random; //랜덤패키지의 임포트, ctrl + shift + O
 public class P68 {
 
 	public static void main(String[] args) {
+		String s2 ="11"
 		String s1 = "10";
 		int s2 = Integer.parseInt(s1);
 		int a = 10;
