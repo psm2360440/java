@@ -6,6 +6,7 @@ public class P73 {
 
 
 	public static void main(String[] args) {
+		String str - "";
 		Scanner sc = new Scanner(System.in); 	//"화면에 입력한 값을 가지고 오겠다"
 		System.out.println("명령어를 입력 하시오(q,i,d,s)");
 		String cmd = sc.next();
