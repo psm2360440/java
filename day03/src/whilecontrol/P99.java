@@ -3,6 +3,7 @@ package whilecontrol;
 public class P99 {
 
 	public static void main(String[] args) {
+		int bbb = 200;
 		for (int i = 2; i < 10; i++) {
 			System.out.printf("%d 단 \n", i);
 			for (int j = 1; j < 10; j++) {
@@ -10,11 +11,5 @@ public class P99 {
 			}
 
 		}
-		int a = 85;
-		String grade = "";
-		grade = ( a >= 90 ) ? "A" : (a>=80)? "B" : (a>=70) ? "C" : "F";
-		
-		System.out.println(grade);
-		
 	}
 }
