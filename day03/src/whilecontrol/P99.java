@@ -10,5 +10,11 @@ public class P99 {
 			}
 
 		}
+		int a = 85;
+		String grade = "";
+		grade = ( a >= 90 ) ? "A" : (a>=80)? "B" : (a>=70) ? "C" : "F";
+		
+		System.out.println(grade);
+		
 	}
 }
