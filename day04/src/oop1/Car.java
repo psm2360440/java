@@ -15,7 +15,6 @@ public class Car {		//속성
 		this.name = name;
 		this.color = color;
 		this.size = size;
-		
 	}
 	
 	public void go() {			//오퍼레이션
