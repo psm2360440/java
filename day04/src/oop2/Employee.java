@@ -48,6 +48,10 @@ public class Employee {
 		return this.salary * 12;
 	}
 
+	public int bonus() {
+		return this.salary*4;
+	}
+	
 	public double getTax() {
 		return this.salary * 0.175;
 	}

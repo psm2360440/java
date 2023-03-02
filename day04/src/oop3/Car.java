@@ -63,7 +63,7 @@ public class Car {		//속성
 	//	멈춘다.'
 	  public void stop() {
 		 System.out.printf("%s Stop ...", this.name);
-//		 if(cfsize == 0) {
+//		 if(cfSize == 0) {
 //			 System.out.println("밥 좀 주세요 네에...");
 //		 }
 	 }
