@@ -56,8 +56,12 @@ public class ItemDAO implements DAO<Integer, ItemDTO>{
 		for ( ItemDTO i : col) {
 			item.add(i);
 		}
-		if(item.size() == 0) {
+		if(item.isEmpty()) {
 			throw new Exception();
-		}		return item;
+		}
+//		if(item.size() == 0) {
+//			throw new Exception();
+//		}
+		return item;
 	}
 }
