@@ -16,7 +16,6 @@ import com.kbstar.frame.DAO;
 import com.kbstar.frame.MakeAccountNumber;
 import com.kbstar.frame.Notification;
 import com.kbstar.noti.NotificationImpl;
-import com.kbstar.service.TransactionService;
 
 /**
  * @author psm23
@@ -84,7 +83,9 @@ public class BankServiceImpl implements BankService<UserDTO, AccountDTO, Transac
 
 	@Override
 	public List<TransactionDTO> getAllTr(String acc) throws Exception {
-		return null;
+		List<TransactionDTO> list = null;
+		list = transactionDao.search(acc);
+		return list;
 	}
 
 	@Override
@@ -109,7 +110,9 @@ public class BankServiceImpl implements BankService<UserDTO, AccountDTO, Transac
 
 	@Override
 	public List<AccountDTO> getAllAccount(String k) throws Exception {
-		return null;
+		List<AccountDTO> list = null;
+		list = accountDao.search(k);
+		return list;
 	}
 
 }

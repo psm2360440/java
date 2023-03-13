@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kbstar.dto.AccountDTO;
 import com.kbstar.dto.TransactionDTO;
 import com.kbstar.frame.DAO;
 
@@ -61,6 +62,13 @@ public class TransactionDAO implements DAO<String, TransactionDTO>{
 	// obj : accNo.
 	@Override
 	public List<TransactionDTO> search(Object obj) throws Exception {
-		return null;
+		List<TransactionDTO> list = new ArrayList<TransactionDTO>();
+		Collection<TransactionDTO> col = db.values();
+		for( TransactionDTO tr: col) {
+			if ((tr.getAccNo()).equals(obj)) {
+				list.add(tr);
+			}
+		}
+		return list;
 	}
 }
