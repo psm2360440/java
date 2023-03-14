@@ -31,7 +31,7 @@ public class SelectTest {
 
 		try ( Connection con = DriverManager.getConnection(url, id, pwd);
 				PreparedStatement pstmt = con.prepareStatement(selectSql);) {
-			pstmt.setString(1, "id17");
+			pstmt.setString(1, "id41");
 			try(ResultSet rset = pstmt.executeQuery()){
 				rset.next(); //	한칸 이동시킴.
 				String db_id = rset.getString("id");	// 1번째부터 자리 시작함

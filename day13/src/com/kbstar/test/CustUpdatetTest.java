@@ -15,12 +15,13 @@ public class CustUpdatetTest {
 		Cust cust4 = new Cust("id91", "pwd21", "tom2", 35);
 
 		try {
-//			crudService.register(cust);
-//			//System.out.println("등록 성공");
+//			crudService.register(cust2);
+			//System.out.println("등록 성공");
 //			crudService.modify(cust);
 //			System.out.println("변경 성공");
 //			crudService.modify(cust3);
 //			crudService.remove(cust2.getId());
+//			crudService.remove(cust.getId());
 //			System.out.println("삭제 성공");
 //			crudService.remove(cust3.getId());
 			crudService.get();
