@@ -25,8 +25,23 @@ public class ItemCRUDServiceImpl implements CRUDService<String, Item> {
 			v.setId(id);
 			dao.insert(v);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			if (e instanceof SQLIntegrityConstraintViolationException) {
-				throw new Exception("ID가 중복되었습니다.");
+				throw new Exception("id가 중복되었습니다.");
+			} else {
+				throw new Exception("시스템 장애 입니다.");
+			}
+		}
+
+	}
+
+	@Override
+	public void modify(Item v) throws Exception {
+		try {
+			dao.update(v);
+		} catch (Exception e) {
+			if (e instanceof SQLIntegrityConstraintViolationException) {
+				throw new Exception("ID가 중복 되었습니다.");
 			} else {
 				throw new Exception("시스템 장애 입니다.");
 			}
@@ -34,12 +49,8 @@ public class ItemCRUDServiceImpl implements CRUDService<String, Item> {
 	}
 
 	@Override
-	public void modify(Item v) throws Exception {
-
-	}
-
-	@Override
 	public void remove(String k) throws Exception {
+		dao.delete(k);
 
 	}
 
@@ -60,7 +71,17 @@ public class ItemCRUDServiceImpl implements CRUDService<String, Item> {
 
 	@Override
 	public List<Item> get() throws Exception {
-		return null;
+		List<Item> list = null;
+		try {
+			list = dao.selectAll();
+		} catch (Exception e) {
+			if (e instanceof SQLRecoverableException) {
+				throw new Exception("시스템 장애 입니다. 잠시 후 재접속 바라요~");
+			} else {
+				throw new Exception("ID가 존재하지 않습니다.");
+			}
+		}
+		return list;
 	}
 
 }
