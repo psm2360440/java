@@ -11,8 +11,8 @@ import com.kbstar.dto.Cart;
 import com.kbstar.frame.DAO;
 import com.kbstar.frame.Sql;
 
-public class CartDaoImpl implements DAO<String, String, Cart>{
-	
+public class CartDaoImpl implements DAO<String, String, Cart> {
+
 	public CartDaoImpl() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -23,7 +23,6 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 		}
 		System.out.println("DB Loaded!");
 	}
-	
 
 	@Override
 	public void insert(Cart v) throws Exception {
@@ -34,19 +33,20 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 			pstmt.setInt(4, v.getCnt());
 			pstmt.executeUpdate();
 		} catch (Exception e1) {
+			e1.printStackTrace();
 			throw e1;
 		}
 	}
+
 	@Override
 	public void delete(String k) throws Exception {
 		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.cartDeleteSql);) {
 			pstmt.setString(1, k);
 			int result = pstmt.executeUpdate();
 			if (result == 0) {
-				System.out.println("존재하지 않는 카트입니다! 확인 후 재시도 부탁드립니다!");
+				throw new Exception("삭제정보없음");
 			}
 		} catch (Exception e2) {
-			//e2.printStackTrace();
 			throw e2;
 		}
 	}
@@ -58,9 +58,11 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 			pstmt.setString(2, v.getItem_id());
 			pstmt.setInt(3, v.getCnt());
 			pstmt.setString(4, v.getId());
-			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+			if (result == 0) {
+				throw new Exception("변경정보없음");
+			}
 		} catch (Exception e3) {
-			//e3.printStackTrace();
 			throw e3;
 		}
 	}
@@ -82,11 +84,10 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 				throw e;
 			}
 		} catch (Exception e4) {
-			//e4.printStackTrace();
 			throw e4;
 		}
 		return cart;
-		}
+	}
 
 	@Override
 	public List<Cart> selectAll() throws Exception {
@@ -104,11 +105,9 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 					list.add(cart);
 				}
 			} catch (Exception e5) {
-				//e5.printStackTrace();
 				throw e5;
 			}
 		} catch (Exception e6) {
-			//e6.printStackTrace();
 			throw e6;
 		}
 		return list;
@@ -118,5 +117,4 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 	public List<Cart> search(String k) throws Exception {
 		return null;
 	}
-
 }

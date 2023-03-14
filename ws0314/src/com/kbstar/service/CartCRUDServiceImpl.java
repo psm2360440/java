@@ -36,9 +36,8 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 			if (e instanceof SQLRecoverableException) {
 				throw new Exception("네트워크 오류 발생!");
 			} else {
-				throw new Exception("변경할 ID가 존재하지 않습니다!");
+				throw new Exception("장바구니에 변경할 정보가 존재하지 않습니다!");
 			}
-
 		}
 	}
 
@@ -50,7 +49,7 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 			if (e instanceof SQLRecoverableException) {
 				throw new Exception("네트워크 오류 발생!");
 			} else {
-				throw new Exception("시스템 장애입니다. 잠시 후 다시 시도하시기 바랍니다!");
+				throw new Exception("장바구니에 삭제할 정보가 존재하지 않습니다!");
 			}
 		}
 	}
@@ -64,7 +63,7 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 			if (e instanceof SQLRecoverableException) {
 				throw new Exception("네트워크 오류 발생!");
 			} else {
-				throw new Exception("입력하신 카트에 해당하는 정보가 없습니다!");
+				throw new Exception("장바구니에 해당 정보가 존재하지 않습니다!");
 			}
 		}
 		return cart;
@@ -76,10 +75,8 @@ public class CartCRUDServiceImpl implements CRUDService<String, Cart> {
 		try {
 			list = dao.selectAll();
 		} catch (Exception e) {
-
-				throw new Exception("네트워크 오류 발생!");
+			throw new Exception("네트워크 오류 발생!");
 		}
-
 		return list;
 	}
 }

@@ -7,14 +7,12 @@ import com.kbstar.service.CartCRUDServiceImpl;
 public class CartUpdateTest {
 	public static void main(String[] args) {
 		CRUDService<String, Cart> cartService = new CartCRUDServiceImpl();
-		Cart cart2 = new Cart("2023314552100", "bogo", "바람막이", 31, null);
+		Cart cart2 = new Cart("2023314408100", "최우식", "빨아쓰는행주", 10, null);
 		try {
-			//cartService.modify(cart);
 			cartService.modify(cart2);
-			System.out.println("변경 완료");
+			System.out.println("장바구니가 수정되었습니다!");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
 }

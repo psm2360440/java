@@ -9,10 +9,10 @@ public class CartRemoveTest {
 	public static void main(String[] args) {
 		CRUDService<String, Cart> cartService = new CartCRUDServiceImpl();
 		try {
-			cartService.remove("2023314261100");
+			cartService.remove("20233146210000");
+			System.out.println("장바구니에서 삭제되었습니다!");
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
 }

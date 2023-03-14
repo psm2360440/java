@@ -9,11 +9,11 @@ public class CartInsertTest {
 	public static void main(String[] args) {
 		CRUDService<String, Cart> cartService = new CartCRUDServiceImpl();
 		
-		Cart obj = new Cart("bogobogo","면도칼",17);
+		Cart obj = new Cart("헤르미온느","버터맥주", 3);
 
 		try {
 			cartService.register(obj);
-			System.out.println("카트 담기 성공!");
+			System.out.println("장바구니 담기 완료!");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 		}
