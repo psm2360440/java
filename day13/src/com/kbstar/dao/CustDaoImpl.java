@@ -1,14 +1,11 @@
 package com.kbstar.dao;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import com.kbstar.dto.Cust;
 import com.kbstar.frame.DAO;
@@ -26,22 +23,6 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 			return;
 		}
 		System.out.println("Driver Loading 성공.");
-	}
-
-	public Connection getConnection() throws Exception {
-		Connection con = null;
-
-		Properties props = new Properties();
-		String fileName = "db_info.txt";
-		FileInputStream in = new FileInputStream(fileName);
-		props.load(in);
-
-		String id = props.getProperty("DB_ID");
-		String pwd = props.getProperty("DB_PWD");
-		String url = props.getProperty("DB_URL");
-		con = DriverManager.getConnection(url, id, pwd);
-		return con;
-
 	}
 
 	@Override

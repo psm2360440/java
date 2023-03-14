@@ -14,14 +14,14 @@ public class CustSelectTest {
 		Cust cust4 = new Cust("id02", "pwd00", "비욘세", 39);
 		
 		try {
-			crudService.register(cust2);
-			crudService.register(cust3);
-			crudService.register(cust4);
+//			crudService.register(cust2);
+//			crudService.register(cust3);
+//			crudService.register(cust4);
 //			crudService.remove("id00");
 //			System.out.println("삭제성공");
-//			cust = crudService.get("id00");
-			crudService.get();
-			System.out.println(cust);
+			cust = crudService.get("id00");
+//			crudService.get();
+//			System.out.println(cust);
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
