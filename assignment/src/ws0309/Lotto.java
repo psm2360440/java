@@ -52,7 +52,7 @@ public class Lotto {
 			}
 			System.out.printf("축하합니다! %d등에 당첨되셨습니다.\n", grade);
 		}
-		return 0;
+		return grade;
 	}
 
 	// 당첨 금액 확인 함수

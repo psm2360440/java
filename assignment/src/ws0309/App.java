@@ -8,6 +8,7 @@ public class App {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		// 로또 생성
+
 		Lotto gameSet = new Lotto();
 		while (true) {
 			// 당첨 번호, 당첨 금액 생성
