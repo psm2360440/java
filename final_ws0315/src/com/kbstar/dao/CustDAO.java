@@ -43,8 +43,6 @@ public class CustDAO implements DAO<String, CustDTO> {
 		}
 	}
 
-	
-
 	@Override
 	public void delete(String k) throws Exception {
 		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.CustDeleteSql);) {
@@ -120,7 +118,7 @@ public class CustDAO implements DAO<String, CustDTO> {
 	}
 
 	@Override
-	public List<CustDTO> search(Object obj) throws Exception {
+	public List<CustDTO> search(String k) throws Exception {
 		return null;
 	}
 }

@@ -12,7 +12,7 @@ public interface DAO<K,V>{
 	public void update(V v) throws Exception;
 	public V select(K k) throws Exception;
 	public List<V> select() throws Exception;
-	public List<V> search(Object obj) throws Exception;
+	public List<V> search(K k) throws Exception;
 
 	public default Connection getConnection() throws Exception {
 		Connection con = null;

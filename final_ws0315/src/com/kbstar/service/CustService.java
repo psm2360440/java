@@ -91,4 +91,10 @@ public class CustService implements CRUDService<String, CustDTO> {
 		}
 		return list;
 	}
+
+	@Override
+	public List<CustDTO> find(String k) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

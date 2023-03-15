@@ -10,7 +10,7 @@ public class CustSelectTest {
 		CRUDService<String, CustDTO> custService = new CustService();
 		
 		try {
-			custService.get("id05");
+			custService.get("id01");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
