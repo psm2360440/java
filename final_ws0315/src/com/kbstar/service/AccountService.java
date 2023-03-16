@@ -52,7 +52,6 @@ public class AccountService implements CRUDService<String, AccountDTO> {
 		AccountDTO obj = null;
 		try {
 			obj = accDao.select(k);
-			System.out.println(obj);
 		} catch (Exception e3) {
 			if (e3 instanceof SQLRecoverableException) {
 				throw new Exception("네트워크 오류 발생!");

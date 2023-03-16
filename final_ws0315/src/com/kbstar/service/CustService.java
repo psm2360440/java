@@ -30,7 +30,7 @@ public class CustService implements CRUDService<String, CustDTO> {
 			if (e instanceof SQLRecoverableException) {
 				throw new Exception("네트워크 오류 발생!");
 			} else {
-				throw new Exception("이미 사용 중인 ID입니다!");
+				throw new Exception("");
 			}
 		}
 		notification.sendSMS(v.getContact(), Msg.registerMsg1);

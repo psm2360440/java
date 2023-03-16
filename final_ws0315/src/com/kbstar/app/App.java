@@ -39,7 +39,7 @@ public class App {
 				String contact = sc.next();
 				cust = new CustDTO(id, pwd, name, contact);
 				try {
-					custService.register(cust);
+					bankService.register(cust);
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -52,7 +52,6 @@ public class App {
 				cust = null;
 				try {
 					cust = bankService.login(id, pwd);
-					System.out.println(cust);
 					System.out.println(
 							"------------------------------------------------------------------------------------");
 					if (cust.getId().equals("admin")) {
@@ -114,18 +113,24 @@ public class App {
 								System.out.println("MakeAccount Completed");
 								System.out.println(acc);
 							} else if (cmn.equals("t")) {
+								AccountDTO acc = null;
 								System.out.println("송금하기 화면입니다!");
 								System.out.println("출금 계좌를 선택해주세요!");
 								String myAcc = sc.next();
-								System.out.println("입금할 계좌 번호를 입력해주세요!");
-								String opositAcc = sc.next();
-								System.out.println("보내실 금액을 입력해주세요!");
-								double amount = Double.parseDouble(sc.next());
-								try {
-									bankService.transaction(myAcc, opositAcc, amount);
-									System.out.println("송금이 완료되었습니다!");
-								} catch (Exception e10) {
-									System.out.println(e10.getMessage());
+								acc = accountService.get(myAcc);
+								if (acc.getHolder_id().equals(cust.getId())) {
+									System.out.println("입금할 계좌 번호를 입력해주세요!");
+									String opositAcc = sc.next();
+									System.out.println("보내실 금액을 입력해주세요!");
+									double amount = Double.parseDouble(sc.next());
+									try {
+										bankService.transaction(myAcc, opositAcc, amount);
+										System.out.println("송금이 완료되었습니다!");
+									} catch (Exception e10) {
+										System.out.println(e10.getMessage());
+									}
+								} else {
+									System.out.println("본인 계좌에서만 송금 가능합니다!");
 								}
 							} else if (cmn.equals("a")) {
 								System.out.println("회원님의 모든 계좌를 불러 옵니다!");
@@ -164,21 +169,24 @@ public class App {
 								System.out.println("조회하실 계좌번호를 입력해주세요!");
 								String accNo = sc.next();
 								AccountDTO myAcc = null;
-								myAcc = accountService.get(accNo);
-								if (myAcc.getHolder_id().equals(cust.getId())) {
-									List<TrDTO> myList = null;
-									myList = trService.find(accNo);
-									if (myList.size() == 0) {
-										System.out.println("해당 계좌로 거래내역이 존재하지 않습니다!");
-									} else {
-										for (TrDTO tr : myList) {
-											System.out.println(tr);
+								try {
+									myAcc = accountService.get(accNo);
+									if (myAcc.getHolder_id().equals(cust.getId())) {
+										List<TrDTO> myList = null;
+										myList = trService.find(accNo);
+										if (myList.size() == 0) {
+											System.out.println("해당 계좌로 거래내역이 존재하지 않습니다!");
+										} else {
+											for (TrDTO tr : myList) {
+												System.out.println(tr);
+											}
 										}
+									} else {
+										System.out.println("본인 계좌만 거래내역을 조회할 수 있습니다. 계좌 번호 확인 후 시도 부탁드립니다!");
 									}
-								} else {
-									System.out.println("본인 계좌만 거래내역을 조회할 수 있습니다. 계좌 번호 확인 후 시도 부탁드립니다!");
+								} catch (Exception e) {
+									System.out.println(e.getMessage());
 								}
-
 							}
 						}
 					}

@@ -65,6 +65,7 @@ public class TrService implements CRUDService<String, TrDTO> {
 		try {
 			myList = dao.search(k);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception("시스템 장애 입니다!");
 		}
 		return myList;

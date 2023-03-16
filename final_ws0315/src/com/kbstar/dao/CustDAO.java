@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLRecoverableException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,9 +37,11 @@ public class CustDAO implements DAO<String, CustDTO> {
 			System.out.println(v.getName() + "님의 가입을 환영합니다!");
 		} catch (Exception e1) {
 			if (e1 instanceof SQLIntegrityConstraintViolationException) {
-				throw new Exception("사용중ID");
+				throw new Exception("이미 사용 중인 ID입니다!");
+			} else if ( e1 instanceof SQLRecoverableException){
+				throw new Exception("네트워크 오류 발생!");
 			} else {
-				throw new Exception("네트워크 장애!");
+				throw new Exception("ID, Password, 이름 등의 길이가 입력 범위를 초과하였습니다!");
 			}
 		}
 	}

@@ -79,7 +79,7 @@ public class AccountDAO implements DAO<String, AccountDTO> {
 				String holder_id = rset.getString("holder_id");
 				acc = new AccountDTO(accNo, balance, regdate, holder_id);
 			} catch (Exception e3) {
-				throw e3;
+				throw new Exception("계좌번호를 확인 후 재시도 부탁드립니다!");
 			}
 		} catch (Exception e4) {
 			throw e4;
